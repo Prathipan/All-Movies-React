@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./App.css";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { AddColor } from "./AddColor";
+import { Movie } from "./Movie";
 
 function App() {
-  const movies = [
+  const moviesList = [
     {
       name: "RRR",
       poster:
@@ -66,97 +70,75 @@ function App() {
         "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him.",
     },
   ];
+  const [Addmovies, setAddMovie] = useState(moviesList);
+  const [name, setName] = useState();
+  const [rating, setRating] = useState();
+  const [poster, setPoster] = useState();
+  const [summary, setSummary] = useState();
+  const handleSubmit = () => {
+    const movie = {
+      name: name,
+      rating: rating,
+      poster: poster,
+      summary: summary,
+    };
+    //  console.log(movie);
+    setAddMovie([...Addmovies, movie]);
+  };
   return (
     <>
-       <div className="movie-list">
-      {movies.map(({ poster, name, rating, summary }) => {
-        return (
-          <Movie
-            poster={poster}
-            name={name}
-            rating={rating}
-            summary={summary}
-          />
-        );
-      })}
-    </div>
-    <div>
-      <AddColor />
+      <div className="formGroup">
+        <TextField
+          label="Enter the name"
+          variant="outlined"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <TextField
+          label="Enter the rating"
+          variant="outlined"
+          onChange={(e) => setRating(e.target.value)}
+        />
+        <TextField
+          label="Enter the poster link"
+          variant="outlined"
+          onChange={(e) => setPoster(e.target.value)}
+        />
+        <TextField
+          label="Enter the summary"
+          variant="outlined"
+          onChange={(e) => setSummary(e.target.value)}
+        />
+        <Button variant="contained" onClick={handleSubmit}>
+          Add Movie
+        </Button>
+        {/*<input className="inputBox" type="text" placeholder="Enter the name" onChange={(e)=> setName(e.target.value)}/>
+        <input className="inputBox" type="text" placeholder="Enter the rating" onChange={(e)=> setRating(e.target.value)}/>
+        <input className="inputBox" type="text" placeholder="Enter the poster link" onChange={(e)=> setPoster(e.target.value)}/>
+        <input className="inputBox" type="text" placeholder="Enter the summary" onChange={(e)=> setSummary(e.target.value)}/>
+        <div>
+          <button className="btn" onClick={handleSubmit}>
+            Add Movie
+          </button>
+        </div>*/}
+      </div>
+      <div className="movie-list">
+        {Addmovies.map(({ poster, name, rating, summary }, i) => {
+          return (
+            <Movie
+              key={i}
+              poster={poster}
+              name={name}
+              rating={rating}
+              summary={summary}
+            />
+          );
+        })}
+      </div>
+      <div>
+        <AddColor />
       </div>
     </>
-     
   );
 }
-
-function Movie({ name, poster, rating, summary }) {
-  const styles = {
-    color: rating > 8.5 ? "green" : "red",
-  };
-
-  return (
-    <div className="movie-container">
-      <img className="movie-poster" src={poster} alt={name} />
-      <div className="movie-specs">
-        <h3 className="movie-name">{name}</h3>
-        <span className="movie-rating" style={styles}>
-          ⭐{rating}
-        </span>
-      </div>
-      <p className="movie-summary">{summary}</p>
-      <Button />
-    </div>
-  );
-}
-
-function Button() {
-  const [like,setLike] = useState(0);
-  const [dislike,setDisLike] = useState(0);
-  return (
-    <div className="button-group">
-      <button className="like" onClick={() => setLike(like+1)}>👍{like}</button>
-      <button className="dislike" onClick={() => setDisLike(dislike+1)}>👎{dislike}</button>
-    </div>
-  );
-}
-
-function AddColor() {
-  const [color,setColor] =useState("red");
-  const [colorList ,setColorList] = useState(["orange","green","blue"])
- const styles = {
-    background : color
-  }
-  // const colorList = ["orange","green","blue"]
-  const addcolor = () => {
-    setColorList([...colorList,color])
-  }
-  return (
-    <div>
-      <input style={styles} onChange={(e=> setColor(e.target.value))} className="input-box" placeholder="Enter a color" value={color}/>
-      <button className="add-button" onClick={addcolor}>Add</button>
-      {
-        colorList.map((clr) => {
-          return <ColorBox color={clr}/>
-        })
-      }
-    </div>
-  );
-}
-
-function ColorBox({color}){
-
-  const styles = {
-    background: color , 
-    height: "30px",
-    width: "250px",
-    marginTop : "25px"
-  }
-
-  return(
-    <div style={styles}></div>
-  );
-
-}
-
-
 
 export default App;

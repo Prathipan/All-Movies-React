@@ -1,3 +1,23 @@
+.formGroup{
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    gap: 10px;
+}
+.inputBox{
+    height: 40px;
+    width: 1500px;
+    margin: 20px;
+}
+.btn{
+    background-color: blue;
+    color: white;
+    height: 20px;
+    width: 1500px;
+    border: none;
+    padding: 25px;
+    margin: 20px;
+}
 .movie-poster{
     height: 500px;
     width: 340px;
@@ -5,11 +25,11 @@
 }
 .movie-container{
     width: 350px;
+    height: min-content;
     background: #2C3639;
     border-radius : 12px;
     color: white;
     padding: 10px;
-    box-shadow: rgba(61, 61, 61, 0.4) 5px 5px, rgba(36, 29, 34, 0.3) 10px 10px, rgba(38, 21, 31, 0.2) 15px 15px, rgba(36, 15, 29, 0.1) 20px 20px, rgba(42, 15, 32, 0.05) 25px 25px;
     /* justify-content: center; */
 }
 .movie-specs{
@@ -25,6 +45,7 @@
 }
 .movie-list{
     display: flex;
+    margin-top: 20px;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 10px;
