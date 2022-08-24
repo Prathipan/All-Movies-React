@@ -136,3 +136,8 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
+.movie-detail-container{
+    max-width: 900px;
+    padding: 25px;
+}

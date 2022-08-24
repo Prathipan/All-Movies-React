@@ -1,8 +1,10 @@
 import React,{ useState } from 'react';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useNavigate } from 'react-router-dom';
 
 function AddForm({Addmovies , setAddMovie}) {
+    const navigate = useNavigate();
     const [name, setName] = useState();
   const [rating, setRating] = useState();
   const [poster, setPoster] = useState();
@@ -17,6 +19,7 @@ function AddForm({Addmovies , setAddMovie}) {
         };
         //  console.log(movie);
         setAddMovie([...Addmovies, movie]);
+        navigate("/movies");
       };
   return (
     <>
