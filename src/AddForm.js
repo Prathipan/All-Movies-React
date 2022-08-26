@@ -9,6 +9,7 @@ function AddForm({Addmovies , setAddMovie}) {
   const [rating, setRating] = useState();
   const [poster, setPoster] = useState();
   const [summary, setSummary] = useState();
+  const [trailer, setTrailer] = useState();
 
     const handleSubmit = () => {
         const movie = {
@@ -16,6 +17,7 @@ function AddForm({Addmovies , setAddMovie}) {
           rating: rating,
           poster: poster,
           summary: summary,
+          trailer: trailer
         };
         //  console.log(movie);
         setAddMovie([...Addmovies, movie]);
@@ -43,6 +45,11 @@ function AddForm({Addmovies , setAddMovie}) {
           label="Enter the summary"
           variant="outlined"
           onChange={(e) => setSummary(e.target.value)}
+        />
+        <TextField
+          label="Enter the trailer"
+          variant="outlined"
+          onChange={(e) => setTrailer(e.target.value)}
         />
         <Button variant="contained" onClick={handleSubmit}>
           Add Movie

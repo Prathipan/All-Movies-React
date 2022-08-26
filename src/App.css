@@ -30,9 +30,9 @@ body{
 .movie-container{
     width: 350px;
     height: min-content;
-    background: #2C3639 !important; 
+    background: #f3f9f9 !important; 
     border-radius : 12px;
-    color: white !important;
+    color: black !important;
     padding: 10px;
     /* justify-content: center; */
 }
@@ -131,7 +131,7 @@ body{
     flex-wrap: wrap;
     max-width: 490px;
 }
-.custom-del-buttons{
+.custom-buttons{
     display: flex;
     justify-content: space-between;
     align-items: center;

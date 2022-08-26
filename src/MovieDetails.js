@@ -1,8 +1,12 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import moviesList from "./movieList";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+import Button from "@mui/material/Button";
 
 function MovieDetails() {
+    const navigate = useNavigate();
     const {id} = useParams();
     console.log(id,moviesList[id]);
   const movie = moviesList[id];
@@ -27,6 +31,9 @@ function MovieDetails() {
         </span>
       </div>
       <p className="summary -de">{movie.summary}</p>
+      <Button variant="contained" onClick={() => navigate(-1)}>
+          <ArrowBackIosIcon/>Back
+        </Button>
     </div>
   );
 }

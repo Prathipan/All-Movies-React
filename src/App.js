@@ -8,6 +8,7 @@ import moviesList from "./movieList";
 import Movie from "./Movie";
 import TicTacToe from "./TicTacToe";
 import MovieDetails from "./MovieDetails";
+import EditMovies from "./EditMovies";
 
 function App() {
   const [Addmovies, setAddMovie] = useState(moviesList);
@@ -38,6 +39,7 @@ function App() {
       <Route exact path="/" element={<Msg />} />
       <Route path="/add-movies" element={<AddForm Addmovies={Addmovies}  setAddMovie={setAddMovie}/>} />
       <Route path="/movies" element={<Movie Addmovies={Addmovies} setAddMovie={setAddMovie}/>} />
+      <Route path="movies/edit/:id" element={<EditMovies Addmovies={Addmovies} setAddMovie={setAddMovie}/>} />
       <Route path="/movies/:id" element={<MovieDetails />} />
       <Route path="/colorgame" element={<AddColor />} />
       <Route path="/tictactoe" element={<TicTacToe />} />

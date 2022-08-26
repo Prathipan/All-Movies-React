@@ -10,7 +10,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import { useNavigate } from "react-router-dom";
 
 
-export function MovieCard({ name, poster, rating, summary,id, deleteButton}) {
+export function MovieCard({ name, poster, rating, summary,id, deleteButton, editButton}) {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const styles = {
@@ -46,11 +46,14 @@ export function MovieCard({ name, poster, rating, summary,id, deleteButton}) {
               Toggle Description
             </Button> */}
       {show ? <p className="movie-summary">{summary}</p> : ""}
-      <div className="custom-del-buttons">
+      <div className="custom-buttons">
         <CardActions>
           <LikeDislike /> 
         </CardActions>
+        <div>
+        {editButton}
         {deleteButton}
+        </div>
       </div>
       {/* </div> */}
     </Card>

@@ -2,8 +2,11 @@ import React from "react";
 import { MovieCard } from "./MovieCard";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from "react-router-dom";
 
 function Movie({ Addmovies, setAddMovie }) {
+   const navigate = useNavigate();
   return (
     <div className="movie-list">
       {Addmovies.map(({ poster, name, rating, summary }, i) => {
@@ -27,6 +30,18 @@ function Movie({ Addmovies, setAddMovie }) {
                 size="large"
               >
                 <DeleteIcon  fontSize="inherit" />
+              </IconButton>
+            }
+            editButton={
+              <IconButton
+              onClick={() =>{
+                navigate(`/movies/edit/${i}`);
+              }}
+                color="primary"
+                aria-label="delete"
+                size="large"
+              >
+                <EditIcon  fontSize="inherit" />
               </IconButton>
             }
           />
