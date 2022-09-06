@@ -30,9 +30,7 @@ body{
 .movie-container{
     width: 350px;
     height: min-content;
-    background: #f3f9f9 !important; 
     border-radius : 12px;
-    color: black !important;
     padding: 10px;
     /* justify-content: center; */
 }
@@ -91,23 +89,6 @@ body{
 .movie-summary{
     margin-top: 0;
 } */
-.nav-bar{
-    background-color: #34495e;
-    height: 42px;
-    margin: 0;
-}
-.nav-bar .nav-list{
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 10px;
-}
-.nav-link{
-    text-decoration: none;
-    color: white;
-}
 .game-box{
     height: 150px;
     width: 150px;

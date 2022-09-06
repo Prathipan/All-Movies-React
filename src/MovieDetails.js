@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import moviesList from "./movieList";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import Button from "@mui/material/Button";
 
 function MovieDetails() {
+    const [movie , setMovie] = useState({});
     const navigate = useNavigate();
     const {id} = useParams();
-    console.log(id,moviesList[id]);
-  const movie = moviesList[id];
+    // console.log(id,moviesList[id]);
+  // const movie = moviesList[id];
+  useEffect(() => {fetch(`https://61efbd81732d93001778e565.mockapi.io/movies/${id}` ,{method: "GET",}) // promise
+  .then((data) => data.json()) // Response object
+  .then((mvs) => setMovie(mvs));}
+  , []);
+  
   return (
     <div className="movie-detail-container">
       <div className="movie-detail-specs">
