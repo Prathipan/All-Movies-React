@@ -19,7 +19,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function App() {
   const [Addmovies, setAddMovie] = useState(moviesList);
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("dark");
   const navigate = useNavigate();
 
   const theme = createTheme({
@@ -91,7 +91,7 @@ function App() {
           <Route
             path="/add-movies"
             element={
-              <AddForm Addmovies={Addmovies} setAddMovie={setAddMovie} />
+              <AddForm  />
             }
           />
           <Route
@@ -101,7 +101,7 @@ function App() {
           <Route
             path="movies/edit/:id"
             element={
-              <EditMovies Addmovies={Addmovies} setAddMovie={setAddMovie} />
+              <EditMovies  />
             }
           />
           <Route path="/movies/:id" element={<MovieDetails />} />

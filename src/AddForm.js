@@ -2,8 +2,9 @@ import React,{ useState } from 'react';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from 'react-router-dom';
+import { API } from './global';
 
-function AddForm({Addmovies , setAddMovie}) {
+function AddForm() {
     const navigate = useNavigate();
     const [name, setName] = useState();
   const [rating, setRating] = useState();
@@ -12,16 +13,22 @@ function AddForm({Addmovies , setAddMovie}) {
   const [trailer, setTrailer] = useState();
 
     const handleSubmit = () => {
-        const movie = {
+        const newMovie = {
           name: name,
           rating: rating,
           poster: poster,
           summary: summary,
           trailer: trailer
         };
+        fetch(`${API}`,{
+          method : "POST",
+          body : JSON.stringify(newMovie),
+          headers : {
+            "Content-Type": "application/json"
+          }
+        }).then(() => navigate("/movies"));
         //  console.log(movie);
-        setAddMovie([...Addmovies, movie]);
-        navigate("/movies");
+        // setAddMovie([...Addmovies, movie]);
       };
   return (
     <>
