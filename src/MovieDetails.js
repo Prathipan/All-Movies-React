@@ -20,8 +20,7 @@ function MovieDetails() {
     <div className="movie-detail-container">
       <div className="movie-detail-specs">
         <iframe
-          width="1200"
-          height="498"
+          className="trailer"
           src={movie.trailer}
           title="RRR Trailer (Tamil) - NTR | Ram Charan | Ajay Devgn | Alia Bhatt | SS Rajamouli | Mar 25th 2022"
           frameborder="0"

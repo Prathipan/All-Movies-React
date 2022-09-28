@@ -1,12 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { AddColor } from "./AddColor";
-
 import AddForm from "./AddForm";
-import moviesList from "./movieList";
+
+import Grid from "@mui/material/Grid";
 import Movie from "./Movie";
-import TicTacToe from "./TicTacToe";
 import MovieDetails from "./MovieDetails";
 import EditMovies from "./EditMovies";
 import AppBar from "@mui/material/AppBar";
@@ -14,11 +12,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 function App() {
-  const [Addmovies, setAddMovie] = useState(moviesList);
+  // const [Addmovies, setAddMovie] = useState(moviesList);
   const [mode, setMode] = useState("dark");
   const navigate = useNavigate();
 
@@ -58,24 +56,10 @@ function App() {
               Add Movies
             </Button>
             <Button
-              onClick={() => {
-                navigate("/colorgame");
-              }}
-              color="inherit"
-            >
-              color-game
-            </Button>
-            <Button
-              onClick={() => {
-                navigate("/tictactoe");
-              }}
-              color="inherit"
-            >
-              Tic Tac Toe
-            </Button>
-            <Button
-              style={{marginLeft : "auto"}}
-              startIcon = {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              style={{ marginLeft: "auto" }}
+              startIcon={
+                mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
+              }
               onClick={() => {
                 setMode(mode === "light" ? "dark" : "light");
               }}
@@ -88,25 +72,10 @@ function App() {
 
         <Routes>
           <Route exact path="/" element={<Msg />} />
-          <Route
-            path="/add-movies"
-            element={
-              <AddForm  />
-            }
-          />
-          <Route
-            path="/movies"
-            element={<Movie  />}
-          />
-          <Route
-            path="movies/edit/:id"
-            element={
-              <EditMovies  />
-            }
-          />
+          <Route path="/add-movies" element={<AddForm />} />
+          <Route path="/movies" element={<Movie />} />
+          <Route path="movies/edit/:id" element={<EditMovies />} />
           <Route path="/movies/:id" element={<MovieDetails />} />
-          <Route path="/colorgame" element={<AddColor />} />
-          <Route path="/tictactoe" element={<TicTacToe />} />
           <Route path="**">404 not found</Route>
         </Routes>
 
@@ -119,7 +88,43 @@ function App() {
 }
 
 function Msg() {
-  return <h1>Welcome to Dashboard 😁🎉</h1>;
+  return (
+    <Grid
+      container
+      spacing={2}
+      direction="column"
+      alignItems="left"
+      justify="center"
+      style={{ minHeight: "100vh" }}
+    >
+      <Grid item xs={3}>
+        <div>
+          <h1>Welcome to Movies App 😁🎉</h1>
+          <h2>All Movies Section</h2>
+          <ul>
+            <li>
+              We can have list of movies with the description with IMDB rating .
+            </li>
+            <li> i button shows the trailer and description of the movie.</li>
+            <li>We can like and dislike the movies here.</li>
+            <li>
+              If we found some typos , we can correct by clicking the pen icon
+            </li>
+            <li>If we don't want that movie we can delete that</li>
+          </ul>
+          <h2>Add Movies Section</h2>
+          <ul>
+            <li>If we want to add movies to the list we can add them</li>
+            <li>
+              We need to enter all details over there , If not it will show
+              error
+            </li>
+            <li>Rating must be 0-10</li>
+          </ul>
+        </div>
+      </Grid>
+    </Grid>
+  );
 }
 
 export default App;
